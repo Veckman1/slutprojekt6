@@ -1,4 +1,4 @@
-def is_win(board, coordinates):
+def is_win(board, coordinates): #requires the grid/board and the current coordinates of the token
     
     row = coordinates[0] #row index
     col = coordinates[1] #column index
@@ -35,9 +35,9 @@ def is_win(board, coordinates):
         
         return True
 
-    #HANDLES VERTICAL WINS
     match = 1
     
+    #HANDLES VERTICAL WINS
     if(row-1 >= 1):
         #if there is a row before the row user placed their token on
         
