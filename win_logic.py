@@ -61,7 +61,7 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
             #if yes;
                        
             match += 1 #add 1 to match
-            current_row += 1 #the ro w after that one            
+            current_row += 1 #the row after that one            
             
                 
     if(match == 4):
