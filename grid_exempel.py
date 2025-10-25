@@ -219,25 +219,36 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
     return False
 
 def runGame():
+    
+    turn = 0
     showGrid(board)
     while True:
+        turn += 1
         GAME_OVER = writeInGrid(board)
-        
         if(GAME_OVER):
             
-            return
+            return False
+        
+        elif(turn == r*c):
+            return True
+        
         
         
 
-runGame()
+DRAW = runGame()
 
 showGrid(board)
 
-Winner = ""
+if(not DRAW):
 
-if GAME_PHASE == PLAYER_1:
-    Winner = "PLAYER 1"
+    Winner = ""
+
+    if GAME_PHASE == PLAYER_1:
+        Winner = "PLAYER 1"
+    else:
+        Winner = "PLAYER 2"
+        
+    print(f"{Winner} WINS!!!".center(width))
 else:
-    Winner = "PLAYER 2"
+    print("IT WAS A DRAW".center(width))
     
-print(f"{Winner} WINS!!!".center(width))
