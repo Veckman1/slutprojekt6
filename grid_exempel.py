@@ -178,9 +178,45 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
         
         return True
     
-    else: 
+    match = 1 #rests the match variable
+    
+    #HANDLES WINS DIAOGNALLY - (LEFT UP AND RIGHT DOWN)
+    if(col+1 < c and row+1 <= r):
+        #if there is a row under and a column after the box the user placed their token in 
         
-        return False
+        current_col = col+1
+        current_row = row+1
+        
+        while((current_col < c and current_row <= r) and token in board[current_row][current_col] and match != 4):
+            #while there is a row under and a column after the box the user placed their tocken in 
+            #check if that has the token
+            
+            match += 1 
+            
+            current_col += 1
+            current_row += 1
+            #go to the next coordinate, the row under and the column after
+    
+    if(col-1 >= 0 and row-1 >= 1):
+        #if there is a row above and a column before the box the user placed their token in 
+        
+        current_col = col-1
+        current_row = row-1
+        
+        while((current_col >= 0 and current_row >= 1) and token in board[current_row][current_col] and match != 4):
+            #while there is a row above and a column before the box the user placed their tocken in 
+            #check if that has the token        
+            match += 1 
+            
+            current_col -= 1
+            current_row -= 1          
+            #go to the next coordinate, the row above and the column before
+                
+    if(match == 4):
+        
+        return True
+    
+    return False
 
 def runGame():
     showGrid(board)
