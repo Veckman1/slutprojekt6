@@ -1,4 +1,4 @@
-def is_win(board, coordinates): #requires the grid/board and the current coordinates of the token
+def is_win(board, coordinates):
     
     row = coordinates[0] #row index
     col = coordinates[1] #column index
@@ -35,9 +35,9 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
         
         return True
 
+    #HANDLES VERTICAL WINS
     match = 1
     
-    #HANDLES VERTICAL WINS
     if(row-1 >= 1):
         #if there is a row before the row user placed their token on
         
@@ -61,13 +61,86 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
             #if yes;
                        
             match += 1 #add 1 to match
-            current_row += 1 #the ro w after that one            
+            current_row += 1 #the row after that one     
             
+    if(match == 4):
+        
+        return True
+    
+    match = 1 #rests the match variable
+
+    #HANDLES WINS DIAOGNALLY - (RIGHT UP AND LEFT DOWN)
+    if(col-1 >= 0 and row+1 <= 6):
+        #if there is a row under and a column behind the box the user placed their token in 
+        
+        current_col = col-1
+        current_row = row+1
+        
+        while((current_col >= 0 and current_row <= 6) and token in board[current_row][current_col] and match != 4):
+            #while there is a row under and a column behind the box the user placed their tocken in 
+            #check if that has the token
+            
+            match += 1 
+            
+            current_col -= 1
+            current_row += 1
+            #go to the next coordinate, the row under and the column before
+    
+    if(col+1 < 7 and row-1 >= 1):
+        #if there is a row above and a column after the box the user placed their token in 
+        
+        current_col = col+1
+        current_row = row-1
+        
+        while((current_col < 7 and current_row >= 1) and token in board[current_row][current_col] and match != 4):
+            #while there is a row above and a column after the box the user placed their tocken in 
+            #check if that has the token        
+            match += 1 
+            
+            current_col += 1
+            current_row -= 1          
+            #go to the next coordinate, the row above and the column after
                 
     if(match == 4):
         
         return True
     
-    else: 
+    match = 1 #rests the match variable
+    
+    #HANDLES WINS DIAOGNALLY - (LEFT UP AND RIGHT DOWN)
+    if(col+1 < 7 and row+1 <= 6):
+        #if there is a row under and a column after the box the user placed their token in 
         
-        return False
+        current_col = col+1
+        current_row = row+1
+        
+        while((current_col < 7 and current_row <= 6) and token in board[current_row][current_col] and match != 4):
+            #while there is a row under and a column after the box the user placed their tocken in 
+            #check if that has the token
+            
+            match += 1 
+            
+            current_col += 1
+            current_row += 1
+            #go to the next coordinate, the row under and the column after
+    
+    if(col-1 >= 0 and row-1 >= 1):
+        #if there is a row above and a column before the box the user placed their token in 
+        
+        current_col = col-1
+        current_row = row-1
+        
+        while((current_col >= 0 and current_row >= 1) and token in board[current_row][current_col] and match != 4):
+            #while there is a row above and a column before the box the user placed their tocken in 
+            #check if that has the token        
+            match += 1 
+            
+            current_col -= 1
+            current_row -= 1          
+            #go to the next coordinate, the row above and the column before
+                
+    if(match == 4):
+        
+        return True
+    
+    return False
