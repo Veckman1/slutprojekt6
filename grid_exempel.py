@@ -2,8 +2,22 @@ import shutil
 import os
 
 
-width=shutil.get_terminal_size().columns
+options1 = {"s":"Start game", "m":"Match history", "q":"Quit"}
+options2 = {"r":"Play again", "q":"Return to menu"}
+options3 = {"q":"Return to menu", "r":"Choose another player"}
 
+
+width=shutil.get_terminal_size().columns
+def splash():
+    lines = """
+O O O O O O O O O O O
+O o o o o o o o o o O
+O o Four in a row o O
+O o o o o o o o o o O
+O O O O O O O O O O O
+""".strip().split("\n")
+    for line in lines:
+        print(line.center(width))
 
 c, r=(7,6)
 
@@ -219,7 +233,8 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
     return False
 
 def runGame():
-    
+    splash()
+
     turn = 0
     showGrid(board)
     while True:
