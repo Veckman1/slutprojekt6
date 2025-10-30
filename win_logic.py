@@ -66,7 +66,7 @@ def is_win(board, coordinates): #requires the grid/board and the current coordin
                 
     if(match == 4):
         
-        return False
+        return True
     
     else: 
         
