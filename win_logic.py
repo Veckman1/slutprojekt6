@@ -141,6 +141,6 @@ def is_win(board, coordinates):
                 
     if(match == 4):
         
-        return True
+        return  True
     
     return False
